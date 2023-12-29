@@ -1,0 +1,78 @@
+<div class="page">
+  <div class="container">
+    <h2>Welcome to <span>NiCommerce</span></h2>
+
+    <form [formGroup]="signUpForm" (ngSubmit)="signUpUser()">
+      <div class="form-group">
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email Address"
+          formControlName="email"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Password"
+          formControlName="password"
+          required
+        />
+        <div
+        *ngIf="
+          signUpForm.get('password')?.invalid &&
+          (signUpForm.get('password')?.dirty ||
+            signUpForm.get('password')?.touched)
+        "
+      >
+        <div *ngIf="signUpForm.get('password')?.errors?.['required']">
+          Password is required.
+        </div>
+        <div *ngIf="signUpForm.get('password')?.errors?.['minlength']">
+          Password must be at least 6 characters long.
+        </div>
+      </div>
+      </div>
+
+      <div class="form-group">
+        <input
+          type="password"
+          id="password-repeat"
+          name="password-repeat"
+          placeholder="Repeat Password"
+          formControlName="password2"
+          required
+        />
+        <div
+        *ngIf="
+          signUpForm.get('password')?.invalid &&
+          (signUpForm.get('password')?.dirty ||
+            signUpForm.get('password')?.touched)
+        "
+      >
+        <div *ngIf="signUpForm.get('password')?.errors?.['required']">
+          Password is required.
+        </div>
+        <div *ngIf="signUpForm.get('password')?.errors?.['minlength']">
+          Password must be at least 6 characters long.
+        </div>
+      </div>
+      </div>
+
+      <div class="remember-me">
+        <input type="checkbox" id="remember-me" name="remember-me" />
+        <label for="remember-me">Remember me</label>
+      </div>
+      <button class="form-group">
+        <input type="submit" value="Register" />
+      </button>
+
+      <p>Already have an account? <a href="/login">Login</a></p>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<form [formGroup]="form">
+    <div formArrayName="dynamicFields">
+      <div *ngFor="let control of dynamicFields.controls; let i = index">
+        <!-- <input [formControl]="control" /> -->
+        <button type="button" (click)="removeField(i)">Remove</button>
+      </div>
+    </div>
+    <button type="submit">Submit</button>
+  </form>

@@ -1,0 +1,108 @@
+<app-navbar />
+<div class="main">
+  <div class="flightSearch">
+    <form [formGroup]="flightSearchForm" (ngSubmit)="onSubmit()">
+      <div>
+        <mat-slide-toggle
+          formControlName="toggleControl"
+          (change)="onToggleChange()"
+          >Round Flight</mat-slide-toggle
+        >
+      </div>
+      <div class="flightDestination">
+        <mat-form-field>
+          <mat-label>Airline</mat-label>
+          <mat-select formControlName="airlineId">
+            <mat-option *ngFor="let airline of airlines" [value]="airline.id">{{ airline.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Origin</mat-label>
+          <mat-select formControlName="origin">
+            <mat-option value="one">First option</mat-option>
+            <mat-option value="two">Second option</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Destination</mat-label>
+          <mat-select formControlName="destination">
+            <mat-option value="one">First option</mat-option>
+            <mat-option value="two">Second option</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="flightDates">
+        <div class="departureDate">
+          <mat-form-field>
+            <mat-label>Departure Date</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              formControlName="departureDate"
+            />
+            <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="returnDate" *ngIf="isChecked">
+          <mat-form-field>
+            <mat-label>Return Date</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker2"
+              formControlName="returnDate"
+            />
+            <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker2"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="passenger">
+        <mat-form-field>
+          <mat-label>Adult</mat-label>
+          <mat-select formControlName="adult">
+            <mat-option value=1>1 Adult</mat-option>
+            <mat-option value=2>2 Adults</mat-option>
+            <mat-option value=3>3 Adults</mat-option>
+            <mat-option value=4>4 Adults</mat-option>
+            <mat-option value=5>5 Adults</mat-option>
+            <mat-option value=6>6 Adults</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Child</mat-label>
+          <mat-select formControlName="child">
+            <mat-option value=1>1 Child</mat-option>
+            <mat-option value=2>2 Children</mat-option>
+            <mat-option value=3>3 Children</mat-option>
+            <mat-option value=4>4 Children</mat-option>
+            <mat-option value=5>5 Children</mat-option>
+            <mat-option value=6>6 Children</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Infant</mat-label>
+          <mat-select formControlName="infant">
+            <mat-option value=1>1 Infant</mat-option>
+            <mat-option value=2>2 Infants</mat-option>
+            <mat-option value=3>3 Infants</mat-option>
+            <mat-option value=4>4 Infants</mat-option>
+            <mat-option value=5>5 Infants</mat-option>
+            <mat-option value=6>6 Infants</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <button class="form-group">
+        <input type="submit" value="Search" />
+      </button>
+    </form>
+  </div>
+</div>

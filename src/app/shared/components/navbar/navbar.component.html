@@ -1,0 +1,22 @@
+<div class="navbar">
+  <div class="logoContainer">
+    <img class="logo" src="../../../../assets/pngwing.png" alt="" />
+  </div>
+  <div class="search-bar">
+    <input
+      type="text"
+      placeholder="Search"
+      [(ngModel)]="searchQuery"
+      (keyup)="search()"
+    />
+    <app-button variation="primary" label="Search" (clicked)="search()" />
+  </div>
+  <div class="icons">
+    <div *ngIf="!isLoggedIn">
+      <app-button width="120px" variation="primary" label="Login" (clicked)="onClickLogin()"></app-button>
+    </div>
+    <div *ngIf="isLoggedIn">
+      <i class="pi pi-user user"> </i>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,96 @@
+<app-navbar></app-navbar>
+
+<div class="home">
+  <div class="sidebar">
+    <app-sidebar />
+  </div>
+  <div class="main">
+    <form [formGroup]="adminForm" (ngSubmit)="onSubmit()" class="admin-form">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          class="form-control"
+        />
+        <div
+          class="error-message"
+          *ngIf="
+            adminForm.get('email')?.invalid &&
+            (adminForm.get('email')?.dirty || adminForm.get('email')?.touched)
+          "
+        >
+          <div *ngIf="adminForm.get('email')?.errors?.['required']">
+            Email is required.
+          </div>
+          <div *ngIf="adminForm.get('email')?.errors?.['email']">
+            Invalid email format.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          class="form-control"
+        />
+        <div
+          class="error-message"
+          *ngIf="
+            adminForm.get('password')?.invalid &&
+            (adminForm.get('password')?.dirty ||
+              adminForm.get('password')?.touched)
+          "
+        >
+          <div *ngIf="adminForm.get('password')?.errors?.['required']">
+            Password is required.
+          </div>
+          <div *ngIf="adminForm.get('password')?.errors?.['minlength']">
+            Password should have at least 6 characters.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password2">Confirm Password:</label>
+        <input
+          type="password"
+          id="passwordRepeat"
+          formControlName="password2"
+          class="form-control"
+        />
+        <div
+          class="error-message"
+          *ngIf="
+            adminForm.get('passwordRepeat')?.invalid &&
+            (adminForm.get('passwordRepeat')?.dirty ||
+              adminForm.get('passwordRepeat')?.touched)
+          "
+        >
+          <div *ngIf="adminForm.get('passwordRepeat')?.errors?.['required']">
+            Confirm Password is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="role">Role:</label>
+        <input
+          type="text"
+          id="role"
+          value="admin"
+          readonly
+          class="form-control"
+        />
+      </div>
+
+      <button type="submit" [disabled]="adminForm.invalid" class="btn-save">
+        Save
+      </button>
+    </form>
+  </div>
+</div>

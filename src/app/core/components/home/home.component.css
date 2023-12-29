@@ -1,0 +1,72 @@
+.home {
+  display: flex;
+}
+.sidebar {
+  flex: 0.7;
+}
+.main {
+  flex: 3;
+  padding: 20px;
+}
+
+.flightSearch {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.flightDestination {
+  display: flex;
+  gap: 20px;
+}
+
+/* .originInput {
+  padding: 15px;
+  border: 0px solid black;
+  width: 16.5vw;
+  height: 100%;
+}
+
+.destinationInput {
+  padding: 15px;
+  border: transparent;
+  width: 17vw;
+} */
+
+.flightDates {
+  display: flex;
+  gap: 20px;
+}
+
+.passenger {
+  display: flex;
+  gap: 20px;
+}
+
+.form-group{
+    border: none;
+    display: flex;
+    align-items: center;
+}
+
+.form-group input[type="submit"] {
+  background-color: rgb(167, 44, 167);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form-group input[type="submit"]:hover {
+  background-color: purple;
+}
+
+@media screen and (max-width: 660px) {
+  .input {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+}

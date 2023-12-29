@@ -1,0 +1,114 @@
+<app-navbar />
+
+<div class="home">
+  <div class="sidebar">
+    <app-sidebar />
+  </div>
+  <div class="main">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Headquarters</th>
+          <th>Airplanes</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let airline of airlines; let i = index">
+          <td>{{ airline.id }}</td>
+          <td>{{ airline.name }}</td>
+          <td>{{ airline.headquarters }}</td>
+          <td>
+            <ul>
+              <li *ngFor="let airplane of airline.airplanes">
+                {{ airplane.model }}
+              </li>
+            </ul>
+          </td>
+          <td>
+            <i
+              class="pi pi-user-edit icons green"
+              (click)="openEditModal(airline, i)"
+            ></i>
+            <i
+              class="pi pi-trash icons red"
+              (click)="onDelete(airline, i)"
+            ></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div>
+      <button type="submit" class="new" (click)="openNewModal()">New</button>
+    </div>
+  </div>
+  <div *ngIf="isModalOpen">
+    <app-modal [isOpen]="isModalOpen" (closeModalEvent)="closeModal()">
+      <form
+        [formGroup]="airlineForm"
+        (ngSubmit)="onEditSubmit()"
+        class="airline-form"
+      >
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input
+            type="name"
+            id="name"
+            formControlName="name"
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="headquarters">Headquarters:</label>
+          <input
+            type="headquarters"
+            id="headquarters"
+            formControlName="headquarters"
+            class="form-control"
+          />
+        </div>
+
+        <button type="submit" [disabled]="airlineForm.invalid" class="btn-save">
+          Save
+        </button>
+      </form>
+    </app-modal>
+  </div>
+  <div *ngIf="isNewModalOpen">
+    <app-modal [isOpen]="isNewModalOpen" (closeModalEvent)="closeNewModal()">
+      <form
+        [formGroup]="airlineForm"
+        (ngSubmit)="onNewSubmit()"
+        class="airline-form"
+      >
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input
+            type="name"
+            id="name"
+            formControlName="name"
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="headquarters">Headquarters:</label>
+          <input
+            type="headquarters"
+            id="headquarters"
+            formControlName="headquarters"
+            class="form-control"
+          />
+        </div>
+
+        <button type="submit" [disabled]="airlineForm.invalid" class="btn-save">
+          Save
+        </button>
+      </form>
+    </app-modal>
+  </div>
+</div>

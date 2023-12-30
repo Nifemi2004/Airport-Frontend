@@ -19,15 +19,13 @@
         <mat-form-field>
           <mat-label>Origin</mat-label>
           <mat-select formControlName="origin">
-            <mat-option value="one">First option</mat-option>
-            <mat-option value="two">Second option</mat-option>
+            <mat-option *ngFor="let origin of origins" [value]="origin">{{origin}}</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Destination</mat-label>
           <mat-select formControlName="destination">
-            <mat-option value="one">First option</mat-option>
-            <mat-option value="two">Second option</mat-option>
+            <mat-option *ngFor="let destination of destinations" [value]="destination">{{destination}}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>

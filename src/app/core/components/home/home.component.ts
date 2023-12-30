@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Airline } from 'src/app/shared/models/airline';
+import { flightRoute } from 'src/app/shared/models/flight-route';
 import { AirlineService } from 'src/app/shared/services/airline.service';
+import { FlightRouteService } from 'src/app/shared/services/flight-route.service';
 
 @Component({
   selector: 'app-home',
@@ -12,13 +14,16 @@ export class HomeComponent implements OnInit {
   isChecked = true;
   flightSearchForm!: FormGroup;
   airlines: Airline[] = [];
+  flightRoutes: flightRoute[] = [];
+  origins: string[] = [];
+  destinations : string[] = [];
+  airlineId!: number;
 
   constructor(
     private formbuilder: FormBuilder,
-    private airlineService: AirlineService
-  ) {}
-
-  ngOnInit() {
+    private airlineService: AirlineService,
+    private flightRouteService: FlightRouteService
+  ) {
     this.flightSearchForm = this.formbuilder.group({
       toggleControl: [true],
       airlineId: [0, [Validators.required]],
@@ -30,6 +35,20 @@ export class HomeComponent implements OnInit {
       child: [''],
       infant: [''],
     });
+
+    this.flightSearchForm.get('airlineId')?.valueChanges.subscribe((airlineId) => {
+      this.onAirlineChange(airlineId);
+      this.airlineId = airlineId
+    });
+
+    this.flightSearchForm.get('origin')?.valueChanges.subscribe((origin) => {
+      this.onOriginChange(this.airlineId, origin);
+    })
+  }
+
+
+  ngOnInit() {
+
 
     this.airlineService.getAllAirline().subscribe(
       (response: any[]) => {
@@ -50,6 +69,32 @@ export class HomeComponent implements OnInit {
       this.isChecked = true;
       this.flightSearchForm.controls['returnDate'].enable();
     }
+  }
+
+
+
+  onAirlineChange(airlineId: number){
+    this.flightRouteService.getAllFlightRoute(airlineId)
+    .subscribe(
+      (response: any) => {
+        this.flightRoutes = response;
+        this.origins = this.flightRoutes.map((items) => items.origin)
+      },
+      (error) => {
+        console.log(error)
+      }
+      )
+  }
+
+  onOriginChange(airlineId:number, origin: string) {
+    this.flightRouteService.getDestinationByOrigin(airlineId, origin)
+    .subscribe(
+      (response: any) => {
+        this.destinations = response
+        console.log(this.destinations)
+      },
+      (error) => console.log(error)
+    )
   }
 
   onSubmit() {

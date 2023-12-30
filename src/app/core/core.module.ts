@@ -14,6 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { FlightResultComponent } from './components/flight-result/flight-result.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     SignupComponent,
     HomeComponent,
     ErrorComponent,
+    FlightResultComponent,
   ],
   imports: [
     CommonModule,

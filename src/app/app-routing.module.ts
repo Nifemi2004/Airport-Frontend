@@ -10,6 +10,7 @@ import { AddAdminComponent } from './admin/component/add-admin/add-admin.compone
 import { AddFlightComponent } from './admin/component/add-flight/add-flight.component';
 import { AddAirlineComponent } from './admin/component/add-airline/add-airline.component';
 import { AddPlanesComponent } from './admin/component/add-planes/add-planes.component';
+import { FlightResultComponent } from './core/components/flight-result/flight-result.component';
 
 const routes: Routes = [
   { path: 'signup', component: SignupComponent },
@@ -30,6 +31,10 @@ const routes: Routes = [
     path: 'allPlanes',
     component: AddPlanesComponent,
     canActivate: [AdminGuard],
+  },
+  {
+    path: 'flightResult',
+    component: FlightResultComponent
   },
   { path: '**', component: ErrorComponent },
 ];

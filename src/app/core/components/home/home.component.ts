@@ -4,6 +4,7 @@ import { Airline } from 'src/app/shared/models/airline';
 import { flightRoute } from 'src/app/shared/models/flight-route';
 import { AirlineService } from 'src/app/shared/services/airline.service';
 import { FlightRouteService } from 'src/app/shared/services/flight-route.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -16,13 +17,14 @@ export class HomeComponent implements OnInit {
   airlines: Airline[] = [];
   flightRoutes: flightRoute[] = [];
   origins: string[] = [];
-  destinations : string[] = [];
+  destinations: string[] = [];
   airlineId!: number;
 
   constructor(
     private formbuilder: FormBuilder,
     private airlineService: AirlineService,
-    private flightRouteService: FlightRouteService
+    private flightRouteService: FlightRouteService,
+    private router: Router
   ) {
     this.flightSearchForm = this.formbuilder.group({
       toggleControl: [true],
@@ -36,20 +38,19 @@ export class HomeComponent implements OnInit {
       infant: [''],
     });
 
-    this.flightSearchForm.get('airlineId')?.valueChanges.subscribe((airlineId) => {
-      this.onAirlineChange(airlineId);
-      this.airlineId = airlineId
-    });
+    this.flightSearchForm
+      .get('airlineId')
+      ?.valueChanges.subscribe((airlineId) => {
+        this.onAirlineChange(airlineId);
+        this.airlineId = airlineId;
+      });
 
     this.flightSearchForm.get('origin')?.valueChanges.subscribe((origin) => {
       this.onOriginChange(this.airlineId, origin);
-    })
+    });
   }
 
-
   ngOnInit() {
-
-
     this.airlineService.getAllAirline().subscribe(
       (response: any[]) => {
         this.airlines = response;
@@ -71,33 +72,38 @@ export class HomeComponent implements OnInit {
     }
   }
 
-
-
-  onAirlineChange(airlineId: number){
-    this.flightRouteService.getAllFlightRoute(airlineId)
-    .subscribe(
+  onAirlineChange(airlineId: number) {
+    this.flightRouteService.getAllFlightRoute(airlineId).subscribe(
       (response: any) => {
         this.flightRoutes = response;
-        this.origins = this.flightRoutes.map((items) => items.origin)
+        this.origins = this.flightRoutes.map((items) => items.origin);
       },
       (error) => {
-        console.log(error)
+        console.log(error);
       }
-      )
+    );
   }
 
-  onOriginChange(airlineId:number, origin: string) {
-    this.flightRouteService.getDestinationByOrigin(airlineId, origin)
-    .subscribe(
+  onOriginChange(airlineId: number, origin: string) {
+    this.flightRouteService.getDestinationByOrigin(airlineId, origin).subscribe(
       (response: any) => {
-        this.destinations = response
-        console.log(this.destinations)
+        this.destinations = response;
+        const inputString = this.destinations[0];
+        const cleanedString = inputString.replace(/[\[\]']+/g, '');
+        this.destinations = cleanedString.split(',');
       },
       (error) => console.log(error)
-    )
+    );
   }
 
   onSubmit() {
-    console.log(this.flightSearchForm.value);
+    const formGroupValue = this.flightSearchForm.value;
+    this.router.navigate(['/flightResult'], {
+      queryParams: { airlineId: this.flightSearchForm.controls['airlineId'].value,
+                     origin: this.flightSearchForm.controls['origin'].value,
+                     destination: this.flightSearchForm.controls['destination'].value,
+                     arrivalDate: this.flightSearchForm.controls['returnDate'].value,
+                     departureDate: this.flightSearchForm.controls['departureDate'].value },
+    });
   }
 }

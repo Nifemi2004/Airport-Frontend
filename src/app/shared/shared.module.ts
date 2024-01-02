@@ -10,7 +10,9 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 import { FormComponent } from './components/form/form.component';
 import { ModalComponent } from './components/modal/modal.component';
-
+import { MenuModule } from 'primeng/menu';
+import { MessagesModule } from 'primeng/messages';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -18,21 +20,24 @@ import { ModalComponent } from './components/modal/modal.component';
     NavbarComponent,
     SidebarComponent,
     FormComponent,
-    ModalComponent
+    ModalComponent,
   ],
   imports: [
     CommonModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    MenuModule,
+    MessagesModule,
+    ToastModule,
   ],
   exports: [
     ButtonComponent,
     NavbarComponent,
     SidebarComponent,
     ModalComponent,
-    FormComponent
+    FormComponent,
   ],
 
   providers: [

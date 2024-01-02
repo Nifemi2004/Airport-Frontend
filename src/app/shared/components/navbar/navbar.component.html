@@ -16,7 +16,9 @@
       <app-button width="120px" variation="primary" label="Login" (clicked)="onClickLogin()"></app-button>
     </div>
     <div *ngIf="isLoggedIn">
-      <i class="pi pi-user user"> </i>
+      <p-toast></p-toast>
+      <p-menu #menu [model]="items" [popup]="true"></p-menu>
+      <i class="pi pi-user user" (click)="menu.toggle($event)"> </i>
     </div>
   </div>
 </div>

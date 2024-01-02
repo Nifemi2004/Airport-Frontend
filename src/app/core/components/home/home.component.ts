@@ -19,6 +19,8 @@ export class HomeComponent implements OnInit {
   origins: string[] = [];
   destinations: string[] = [];
   airlineId!: number;
+  departurelocaleDateString!: String
+  returnlocaleDateString!: String
 
   constructor(
     private formbuilder: FormBuilder,
@@ -98,12 +100,34 @@ export class HomeComponent implements OnInit {
 
   onSubmit() {
     const formGroupValue = this.flightSearchForm.value;
+    const returnDateFormControl = this.flightSearchForm.controls['returnDate'];
+    const departureDateFormControl = this.flightSearchForm.controls['departureDate']
+
+    if (returnDateFormControl.value) {
+      const returnDate = new Date(returnDateFormControl.value);
+
+      this.returnlocaleDateString = returnDate.toLocaleDateString();
+
+    } else {
+      console.log('Return date is not set');
+    }
+
+    if (departureDateFormControl.value) {
+      const departureDate = new Date(departureDateFormControl.value);
+
+      this.departurelocaleDateString = departureDate.toLocaleDateString();
+
+    } else {
+      console.log('Return date is not set');
+    }
+
     this.router.navigate(['/flightResult'], {
       queryParams: { airlineId: this.flightSearchForm.controls['airlineId'].value,
                      origin: this.flightSearchForm.controls['origin'].value,
                      destination: this.flightSearchForm.controls['destination'].value,
-                     arrivalDate: this.flightSearchForm.controls['returnDate'].value,
-                     departureDate: this.flightSearchForm.controls['departureDate'].value },
+                     arrivalDate: this.returnlocaleDateString,
+                     departureDate: this.departurelocaleDateString,
+                     ad: this.flightSearchForm.controls['adult'].value },
     });
   }
 }

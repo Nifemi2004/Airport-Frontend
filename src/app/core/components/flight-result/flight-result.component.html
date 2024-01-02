@@ -1,0 +1,25 @@
+<app-navbar />
+<div class="summary">
+  <div class="main-summary">
+    <h1>{{ origin }} to {{ destination }}</h1>
+    <p>{{ stringDepartureDate }}, {{ adult }} adult</p>
+  </div>
+  <div class="priceContainer">
+    <div class="price"><span class="price-amount">{{price}}</span> NGN</div>
+    <div>
+        <app-button variation="primary" width="150px" height="55px" label="Continue"  />
+    </div>
+  </div>
+</div>
+<div class="card">
+  <p-steps
+    [model]="items"
+    [readonly]="false"
+    [activeIndex]="activeIndex"
+    (activeIndexChange)="onActiveIndexChange($event)"
+  ></p-steps>
+</div>
+<div class="main">
+  <h3>Departure</h3>
+  <h1>{{ origin }} to {{ destination }}</h1>
+</div>

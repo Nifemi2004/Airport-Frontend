@@ -18,14 +18,30 @@ export class FlightService {
     airlineId: number,
     origin: string,
     destination: string,
-    departureDate: String,
-    arrivalDate: String
+    departureDate: string,
+    arrivalDate: string
   ): Observable<Flight[]> {
+    // Build the query parameters dynamically
+    let queryParams = `origin=${origin}&destination=${destination}`;
+  
+    if (arrivalDate) {
+      queryParams += `&arrivalDate=${arrivalDate}`;
+    }else{
+      queryParams += `&arrivalDate=null`;
+    }
+  
+    if (departureDate) {
+      queryParams += `&departureDate=${departureDate}`;
+    }else{
+      queryParams += `&departureDate=null`;
+    }
+  
     return this.http.get<Flight[]>(
-      `${environment.baseUrl}/airlines/${airlineId}/flight?origin=${origin}&destination=${destination}&arrivalDate=${arrivalDate}&departureDate=${departureDate}`,
+      `${environment.baseUrl}/airline/${airlineId}/airplane/flight?${queryParams}`,
       {
         headers: this.globalConfig.headers,
       }
     );
   }
+  
 }

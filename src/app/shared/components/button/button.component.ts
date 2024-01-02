@@ -8,6 +8,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class ButtonComponent {
   @Input() label!: string;
   @Input() width!: string;
+  @Input() height!: string;
   @Input() variation: 'primary' | 'outline' | 'secondary' = 'primary';  
   @Output() clicked: EventEmitter<void> = new EventEmitter<void>();
 

@@ -21,6 +21,13 @@ export class AirlineService {
   }
 
 
+   getAirlineById(id: number): Observable<Airline[]> {
+    return this.http.get<Airline[]>(`${environment.baseUrl}/airlines/${id}`, {
+      headers: this.globalConfig.headers,
+    });
+  }
+
+
   createAirline(newAirline: Airline): Observable<Airline> {
     return this.http.post<Airline>(
       `${environment.baseUrl}/airlines`,

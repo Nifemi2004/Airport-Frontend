@@ -1,0 +1,130 @@
+.home {
+    display: flex;
+  }
+  .sidebar {
+    flex: 0.7;
+  }
+  .main {
+    flex: 3;
+  }
+  
+  .icons {
+    margin: 10px;
+    border-radius: 50%;
+    padding: 4px;
+  }
+  
+  .green {
+    color: white;
+    border: 1px solid green;
+    background-color: green;
+  }
+  
+  .green:hover {
+    color: green;
+    background-color: white;
+  }
+  
+  .red:hover {
+    color: red;
+    background-color: white;
+  }
+  
+  .red {
+    color: white;
+    border: 1px solid red;
+    background-color: red;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1em;
+  }
+  
+  th,
+  td {
+    border: 1px solid #ddd;
+    padding: 0.5em 1em;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f1f1f1;
+    font-weight: bold;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    display: inline-block;
+    margin: 0 0.5em 0.5em 0;
+    padding: 0.2em 0.5em;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+  }
+  
+  .airline-form {
+    max-width: 400px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .airline-form {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .btn-save {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .btn-save[disabled] {
+    background-color: #a0a0a0;
+    cursor: not-allowed;
+  }
+  
+  .btn-save:hover {
+    background-color: #45a049;
+  }
+  
+  .new {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .new:hover {
+    background-color: #45a049;
+  }

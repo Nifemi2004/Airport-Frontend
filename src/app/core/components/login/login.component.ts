@@ -37,7 +37,7 @@ export class LoginComponent {
         if (response.role === 'ADMIN') {
           this.router.navigate(['/addAdmin']);
         } else if (response.role === 'AIRLINE') {
-          this.router.navigate(['/airlineFlights']);
+          this.router.navigate(['/airlinePlanes']);
         } else {
           this.router.navigate(['/home']);
         }

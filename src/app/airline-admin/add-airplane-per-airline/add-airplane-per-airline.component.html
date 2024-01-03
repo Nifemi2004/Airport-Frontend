@@ -1,1 +1,128 @@
-<p>add-airplane-per-airline works!</p>
+<app-navbar />
+<div class="home">
+  <div class="sidebar">
+    <app-sidebar />
+  </div>
+  <div class="main">
+    <table>
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Capacity</th>
+          <th>Code</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let airplane of airplanes; let i = index">
+          <td>{{ airplane.model }}</td>
+          <td>{{ airplane.capacity }}</td>
+          <td>{{ airplane.code }}</td>
+          <td>
+            <i
+              class="pi pi-user-edit icons green"
+              (click)="openEditModal(airplane, i)"
+            ></i>
+            <i
+              class="pi pi-trash icons red"
+              (click)="onDelete(airplane, i)"
+            ></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div>
+      <button type="submit" class="new" (click)="openNewModal()">New</button>
+    </div>
+  </div>
+
+  <div *ngIf="isModalOpen">
+    <app-modal [isOpen]="isModalOpen" (closeModalEvent)="closeModal()">
+      <form
+        [formGroup]="airplaneForm"
+        (ngSubmit)="onEditSubmit()"
+        class="airplane-form"
+      >
+
+        <div class="form-group">
+          <label for="model">Model:</label>
+          <input
+            type="model"
+            id="model"
+            formControlName="model"
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="capacity">Capacity:</label>
+          <input
+            type="number"
+            id="capacity"
+            formControlName="capacity"
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="code">Code:</label>
+          <input
+            type="code"
+            id="code"
+            formControlName="code"
+            class="form-control"
+          />
+        </div>
+
+        <button type="submit" [disabled]="airplaneForm.invalid" class="btn-save">
+          Save
+        </button>
+      </form>
+    </app-modal>
+  </div>
+  <div *ngIf="isNewModalOpen">
+    <app-modal [isOpen]="isNewModalOpen" (closeModalEvent)="closeNewModal()">
+      <form
+        [formGroup]="airplaneForm"
+        (ngSubmit)="onNewSubmit ()"
+        class="airplane-form"
+      >
+        <div class="form-group">
+          <label for="model">Model:</label>
+          <input
+            type="model"
+            id="model"
+            formControlName="model"
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="capacity">Capacity:</label>
+          <input
+            type="number"
+            id="capacity"
+            formControlName="capacity"
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="code">Code:</label>
+          <input
+            type="code"
+            id="code"
+            formControlName="code"
+            class="form-control"
+          />
+        </div>
+
+        <button type="submit" [disabled]="airplaneForm.invalid" class="btn-save">
+          Save
+        </button>
+      </form>
+    </app-modal>
+  </div>
+  <div></div>
+</div>

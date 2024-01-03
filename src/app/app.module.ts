@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { AdminModule } from './admin/admin.module';
+import { AirlineAdminModule } from './airline-admin/airline-admin.module';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { AdminModule } from './admin/admin.module';
     SharedModule,
     HttpClientModule,
     AdminModule,
+    AirlineAdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]

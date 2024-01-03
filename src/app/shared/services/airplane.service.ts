@@ -23,6 +23,15 @@ export class AirplaneService {
     );
   }
 
+  getAllAirplaneByAirlineId(airlineId: number): Observable<Airplane[]> {
+    return this.http.get<Airplane[]>(
+      `${environment.baseUrl}/airlines/${airlineId}/airplane`,
+      {
+        headers: this.globalConfig.headers,
+      }
+    );
+  }
+
   createAirplane(newAirplane: Airplane, id?: number): Observable<Airplane> {
     return this.http.post<Airplane>(
       `${environment.baseUrl}/airlines/${id}/airplane`,

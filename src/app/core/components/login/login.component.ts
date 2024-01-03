@@ -9,14 +9,14 @@ import { MessageService } from 'primeng/api';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [MessageService]
+  providers: [MessageService],
 })
 export class LoginComponent {
   constructor(
     private formbuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private messageService: MessageService  
+    private messageService: MessageService
   ) {}
 
   logInForm!: FormGroup;
@@ -34,24 +34,26 @@ export class LoginComponent {
 
     this.authService.loginUser(this.logInForm.value).subscribe(
       (response) => {
-        if(response.role === "ADMIN"){
+        if (response.role === 'ADMIN') {
           this.router.navigate(['/addAdmin']);
-        }else if(response.role === "AIRLINE"){
+        } else if (response.role === 'AIRLINE') {
           this.router.navigate(['/airlineFlights']);
-        }
-        else{
+        } else {
           this.router.navigate(['/home']);
         }
       },
       (error) => {
-        if(error.status === 401){
-          console.log(error.error)
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Invalid Credentials' });
-        }else{
-          console.log(error)
+        if (error.status === 401) {
+          console.log(error.error);
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'Invalid Credentials',
+          });
+        } else {
+          console.log(error);
         }
       }
     );
   }
-
 }

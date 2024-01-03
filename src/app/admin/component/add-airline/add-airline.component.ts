@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Airline } from 'src/app/shared/models/airline';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AirlineService } from 'src/app/shared/services/airline.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-add-airline',
@@ -16,17 +17,23 @@ export class AddAirlineComponent {
   airlineForm!: FormGroup;
   selectedAirline!: Airline;
   editAirlineEvent: any;
+  // userAirlineId: number | null | undefined;
 
   constructor(
     private airlineService: AirlineService,
-    private formBuilder: FormBuilder
-  ) {}
+    private formBuilder: FormBuilder,
+    private authService: AuthService
+  ) {
+    // this.userAirlineId = this.authService.userValue?.airlineId;
+  }
 
   ngOnInit() {
     this.airlineForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       headquarters: ['', [Validators.required]],
     });
+
+
 
     this.airlineService.getAllAirline().subscribe(
       (response: any[]) => {

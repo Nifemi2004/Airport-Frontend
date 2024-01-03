@@ -11,6 +11,9 @@ import { AddFlightComponent } from './admin/component/add-flight/add-flight.comp
 import { AddAirlineComponent } from './admin/component/add-airline/add-airline.component';
 import { AddPlanesComponent } from './admin/component/add-planes/add-planes.component';
 import { FlightResultComponent } from './core/components/flight-result/flight-result.component';
+import { AddAirplanePerAirlineComponent } from './airline-admin/add-airplane-per-airline/add-airplane-per-airline.component';
+import { AirlineGuard } from './shared/services/guards/airline.guard';
+import { AddFlightPerAirlineComponent } from './airline-admin/add-flight-per-airline/add-flight-per-airline.component';
 
 const routes: Routes = [
   { path: 'signup', component: SignupComponent },
@@ -33,8 +36,18 @@ const routes: Routes = [
     canActivate: [AdminGuard],
   },
   {
+    path:'airlinePlanes',
+    component: AddAirplanePerAirlineComponent,
+    canActivate: [AirlineGuard]
+  },
+  {
+    path:'airlineFlights',
+    component: AddFlightPerAirlineComponent,
+    canActivate: [AirlineGuard]
+  },
+  {
     path: 'flightResult',
-    component: FlightResultComponent
+    component: FlightResultComponent,
   },
   { path: '**', component: ErrorComponent },
 ];

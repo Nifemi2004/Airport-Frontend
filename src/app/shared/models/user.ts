@@ -6,4 +6,5 @@ export interface User {
   password: string;
   accessToken: string;
   refreshToken: string;
+  airlineId: number | null;
 }

@@ -12,7 +12,7 @@ import { AuthService } from '../auth.service';
 @Injectable({
   providedIn: 'root',
 })
-export class AdminGuard implements CanActivate {
+export class AirlineGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -24,7 +24,7 @@ export class AdminGuard implements CanActivate {
     | UrlTree {
     const user = this.authService.userValue;
 
-    if (user && (user.role === 'ADMIN')) {
+    if (user && (user.role === 'AIRLINE')) {
       return true;
     }
 

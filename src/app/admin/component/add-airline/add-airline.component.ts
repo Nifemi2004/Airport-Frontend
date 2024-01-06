@@ -71,7 +71,7 @@ export class AddAirlineComponent {
 
   closeModal() {
     this.isModalOpen = false;
-    this.selectedAirline != null;
+    this.selectedAirline = null as unknown as Airline;
   }
 
   onEditSubmit() {

@@ -13,6 +13,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { MenuModule } from 'primeng/menu';
 import { MessagesModule } from 'primeng/messages';
 import { ToastModule } from 'primeng/toast';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ToastModule } from 'primeng/toast';
     SidebarComponent,
     FormComponent,
     ModalComponent,
+    CarouselComponent,
   ],
   imports: [
     CommonModule,
@@ -38,6 +40,7 @@ import { ToastModule } from 'primeng/toast';
     SidebarComponent,
     ModalComponent,
     FormComponent,
+    CarouselComponent,
   ],
 
   providers: [

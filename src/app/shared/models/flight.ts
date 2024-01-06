@@ -1,10 +1,13 @@
 export interface Flight {
-    name: string
-    description: string
-    category: string[]
-    image: string
-    quantity: number
-    size: string[]
-    color: string
-    price: number
+   airplaneId: number,
+   id: number,
+   flightNumber: string
+   origin: string,
+   destination: string,
+   departureDate: string,
+   arrivalDate: string,
+   economyPrice: number,
+   businessPrice: number,
+   firstPrice: number,
+   status: string
   }

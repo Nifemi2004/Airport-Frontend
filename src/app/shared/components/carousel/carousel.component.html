@@ -2,8 +2,10 @@
     <button class="carousel-button prev" (click)="prevSlide()">❮</button>
     <div class="carousel-track" [@slide]="currentIndex">
       <div class="carousel-item" *ngFor="let item of items">
-        {{item.departureDate}}
-        {{item.economyPrice}}
+        <div class="carousel-wrapper">
+          <div class="departureDate">{{item.departureDate}}</div> 
+          <div class="economyPrice">#{{item.economyPrice}}</div>  
+        </div>
       </div>
     </div>
     <button class="carousel-button next" (click)="nextSlide()">❯</button>

@@ -28,7 +28,7 @@ export class FlightService {
 
   getFlightByAirline(airlineId?: number): Observable<Flight[]> {
     return this.http.get<Flight[]>(
-      `${environment.baseUrl}/airline/${airlineId}/airplane/flights`,
+      `${environment.baseUrl}/airlines/${airlineId}/airplane/flights`,
       {
         headers: this.globalConfig.headers,
       }
@@ -57,7 +57,7 @@ export class FlightService {
     }
 
     return this.http.get<Flight[]>(
-      `${environment.baseUrl}/airline/${airlineId}/airplane/flight?${queryParams}`,
+      `${environment.baseUrl}/airlines/${airlineId}/airplane/flight?${queryParams}`,
       {
         headers: this.globalConfig.headers,
       }
@@ -69,7 +69,7 @@ export class FlightService {
 
 
     return this.http.get<Flight[]>(
-      `${environment.baseUrl}/airline/${airlineId}/airplane/flightsPerDay?${queryParams}`,
+      `${environment.baseUrl}/airlines/${airlineId}/airplane/flightsPerDay?${queryParams}`,
       {
         headers: this.globalConfig.headers,
       }

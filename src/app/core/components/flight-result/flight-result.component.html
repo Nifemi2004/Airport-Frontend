@@ -6,9 +6,16 @@
     <p>{{ stringDepartureDate }}, {{ adult }} adult</p>
   </div>
   <div class="priceContainer">
-    <div class="price"><span class="price-amount">{{price}}</span> NGN</div>
+    <div class="price">
+      <span class="price-amount">{{ price }}</span> NGN
+    </div>
     <div>
-        <app-button variation="primary" width="150px" height="55px" label="Continue"  />
+      <app-button
+        variation="primary"
+        width="150px"
+        height="55px"
+        label="Continue"
+      />
     </div>
   </div>
 </div>
@@ -26,4 +33,39 @@
 </div>
 <div class="carousel">
   <app-carousel></app-carousel>
+</div>
+<div *ngFor="let flight of flights; let i = index">
+  <div class="result-items">
+    <div class="minor-details">
+      <div class="minor-detail">
+        <div>Flight Number</div>
+        <div>{{ flight.flightNumber }}</div>
+      </div>
+      <div class="minor-detail">
+        <div>Departure Date</div>
+        <div>{{ flight.departureDate }}</div>
+      </div>
+      <div class="minor-detail">
+        <div>Arrival Date</div>
+        <div>{{ flight.arrivalDate }}</div>
+      </div>
+    </div>
+    <div class="prices-container">
+      <hr />
+      <div class="prices">
+        <div>Economy Price</div>
+        <div>{{ flight.economyPrice }}</div>
+      </div>
+      <hr />
+      <div class="prices">
+        <div>Business Price</div>
+        <div>{{ flight.businessPrice }}</div>
+      </div>
+      <hr />
+      <div class="prices">
+        <div>First Price</div>
+        <div>{{ flight.firstPrice }}</div>
+      </div>
+    </div>
+  </div>
 </div>

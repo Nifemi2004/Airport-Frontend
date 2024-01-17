@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FlightService } from 'src/app/shared/services/flight.service';
 import { MenuItem } from 'primeng/api';
+import { Flight } from 'src/app/shared/models/flight';
 
 @Component({
   selector: 'app-flight-result',
@@ -10,6 +11,7 @@ import { MenuItem } from 'primeng/api';
 })
 export class FlightResultComponent {
   items: MenuItem[] | undefined;
+  flights: Flight[] = []
   activeIndex: number = 0;
   origin!: string;
   destination!: string;
@@ -85,7 +87,7 @@ export class FlightResultComponent {
           formattedArrivalDate
         )
         .subscribe(
-          (response) => console.log(response),
+          (response) => this.flights = response,
           (error) => console.log(error)
         );
     });

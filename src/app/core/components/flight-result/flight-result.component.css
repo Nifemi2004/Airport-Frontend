@@ -42,3 +42,33 @@
 .carousel{
     margin: 0 100px;
 }
+
+.result-items{
+    margin: 20px 100px;
+    padding: 0 40px;
+    display: flex;
+    border: 0.5px solid #90b1c5;
+    border-radius: 15px;
+    justify-content: space-between;
+}
+
+.minor-details{
+    display: flex;
+    gap: 4rem;
+}
+
+.minor-detail{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.prices-container{
+    display: flex;
+    gap: 2.5rem;
+}
+
+.prices{
+    padding: 20px 0;
+}

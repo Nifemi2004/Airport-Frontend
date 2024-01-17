@@ -16,7 +16,7 @@ export class AirplaneService {
 
   getAllAirplane(): Observable<Airplane[]> {
     return this.http.get<Airplane[]>(
-      `${environment.baseUrl}/airline/airplanes`,
+      `${environment.baseUrl}/airlines/airplanes`,
       {
         headers: this.globalConfig.headers,
       }

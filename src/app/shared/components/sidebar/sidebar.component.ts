@@ -39,7 +39,8 @@ export class SidebarComponent {
   initializeSidebar() {
     if (this.userAirlineId !== null) {
       this.sidebarItems = this.sidebarItems.filter(
-        (item) => item.label !== 'Add Admin'
+        (item) => item.label !== 'Add Admin',
+        
       );
       this.sidebarItems = this.sidebarItems.filter(
         (item) => item.label !== 'Manage Airline'
@@ -51,6 +52,6 @@ export class SidebarComponent {
     { label: 'Add Admin', link: '/addAdmin' },
     { label: 'Manage Airline', link: '/addAirline' },
     { label: 'Manage Airplanes', link: '/allPlanes' },
-    { label: 'Manage Flights', link: '/addFlight' },
+    { label: 'Manage Flights', link: '/airlineFlights' },
   ];
 }

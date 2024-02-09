@@ -22,14 +22,16 @@ export class SignupComponent implements OnInit {
 
  ngOnInit(): void {
    this.signUpForm = this.formbuilder.group({
+    name: ['', [Validators.required]],
+    username: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]], 
     password: ['', [Validators.required, Validators.minLength(6)]],
-    password2: ['', [Validators.required, Validators.minLength(6)]]
+    role: ['USER', [Validators.required]],
+    airlineId: [null],
    })
  }
 
  signUpUser() {
-  //If not valid, stops here
   if (!this.signUpForm.valid) return alert('Form is invalid.');
 
   this.authService.createUser(this.signUpForm.value).subscribe(

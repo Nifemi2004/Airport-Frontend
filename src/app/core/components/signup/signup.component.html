@@ -1,8 +1,30 @@
 <div class="page">
   <div class="container">
-    <h2>Welcome to <span>NiCommerce</span></h2>
+    <h2>Welcome to <span>NiPort Air</span></h2>
 
     <form [formGroup]="signUpForm" (ngSubmit)="signUpUser()">
+      <div class="form-group">
+        <input
+          type="name"
+          id="name"
+          name="name"
+          placeholder="Name"
+          formControlName="name"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <input
+          type="username"
+          id="username"
+          name="username"
+          placeholder="Username"
+          formControlName="username"
+          required
+        />
+      </div>
+
       <div class="form-group">
         <input
           type="email"
@@ -21,31 +43,6 @@
           name="password"
           placeholder="Password"
           formControlName="password"
-          required
-        />
-        <div
-        *ngIf="
-          signUpForm.get('password')?.invalid &&
-          (signUpForm.get('password')?.dirty ||
-            signUpForm.get('password')?.touched)
-        "
-      >
-        <div *ngIf="signUpForm.get('password')?.errors?.['required']">
-          Password is required.
-        </div>
-        <div *ngIf="signUpForm.get('password')?.errors?.['minlength']">
-          Password must be at least 6 characters long.
-        </div>
-      </div>
-      </div>
-
-      <div class="form-group">
-        <input
-          type="password"
-          id="password-repeat"
-          name="password-repeat"
-          placeholder="Repeat Password"
-          formControlName="password2"
           required
         />
         <div

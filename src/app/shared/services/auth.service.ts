@@ -30,8 +30,8 @@ export class AuthService {
         .post<User>(`${environment.baseUrl}/auth/register`, newUser)
         .pipe(
           map((user) => {
-            console.log(user.accessToken, 'breadstew');
             sessionStorage.setItem('accessToken', user.accessToken);
+            sessionStorage.setItem('refreshToken', user.refreshToken);
             sessionStorage.setItem('user', JSON.stringify(user));
             this.userSubject.next(user);
             return user;

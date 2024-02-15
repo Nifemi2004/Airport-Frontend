@@ -19,6 +19,7 @@ export class FlightResultComponent {
   stringArrivalDate!: string;
   adult!: number;
   price: number = 0;
+  isOpen: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,6 +28,14 @@ export class FlightResultComponent {
 
   onActiveIndexChange(event: number) {
     this.activeIndex = event;
+  }
+
+  openDropdown = () => {
+    if(this.isOpen === true){
+      this.isOpen = false
+    }else{
+      this.isOpen = true
+    }
   }
 
   ngOnInit() {
@@ -87,7 +96,10 @@ export class FlightResultComponent {
           formattedArrivalDate
         )
         .subscribe(
-          (response) => this.flights = response,
+          (response) => {
+            this.flights = response
+            console.log(this.flights)
+          },
           (error) => console.log(error)
         );
     });

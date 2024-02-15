@@ -34,38 +34,44 @@
 <div class="carousel">
   <app-carousel></app-carousel>
 </div>
-<div *ngFor="let flight of flights; let i = index">
-  <div class="result-items">
-    <div class="minor-details">
-      <div class="minor-detail">
-        <div>Flight Number</div>
-        <div>{{ flight.flightNumber }}</div>
+<div>
+  <div *ngFor="let flight of flights; let i = index">
+    <div class="result-items" [class.open] = "isOpen">
+      <div class="minor-details">
+        <div class="minor-detail">
+          <div>Flight Number</div>
+          <div>{{ flight.flightNumber }}</div>
+        </div>
+        <div class="minor-detail">
+          <div>Departure Date</div>
+          <div>{{ flight.departureDate }}</div>
+        </div>
+        <div class="minor-detail">
+          <div>Arrival Date</div>
+          <div>{{ flight.arrivalDate }}</div>
+        </div>
       </div>
-      <div class="minor-detail">
-        <div>Departure Date</div>
-        <div>{{ flight.departureDate }}</div>
-      </div>
-      <div class="minor-detail">
-        <div>Arrival Date</div>
-        <div>{{ flight.arrivalDate }}</div>
-      </div>
-    </div>
-    <div class="prices-container">
-      <hr />
-      <div class="prices">
-        <div>Economy Price</div>
-        <div>{{ flight.economyPrice }}</div>
-      </div>
-      <hr />
-      <div class="prices">
-        <div>Business Price</div>
-        <div>{{ flight.businessPrice }}</div>
-      </div>
-      <hr />
-      <div class="prices">
-        <div>First Price</div>
-        <div>{{ flight.firstPrice }}</div>
+      <div class="prices-container">
+        <hr />
+        <div class="prices">
+          <div>Economy Price</div>
+          <div>{{ flight.economyPrice }}</div>
+        </div>
+        <hr />
+        <div class="prices">
+          <div>Business Price</div>
+          <div (click)="openDropdown()">{{ flight.businessPrice }}</div>
+        </div>
+        <hr />
+        <div class="prices">
+          <div>First Price</div>
+          <div>{{ flight.firstPrice }}</div>
+        </div>
       </div>
     </div>
   </div>
+  <div>
+
+  </div>
 </div>
+
